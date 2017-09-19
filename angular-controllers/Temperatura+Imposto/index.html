@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício AngularJS: Controllers</title>
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Controllers</a>
+        </div>
+    </nav>
+
+
+    <div ng-controller="TemperaturaController as tempCtrl">
+
+      <h5>Conversor de temperatura</h5>
+      Celsius: <input type="text" ng-model="tempCtrl.celsius"> <br>
+      Kelvin: {{tempCtrl.celsiusToKelvin(tempCtrl.celsius)}} <br>
+      Fahrenheit: {{tempCtrl.celsiusToFa(tempCtrl.celsius)}} <br>
+
+       <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+          <input-field>
+              <h5>Seu salário:</h5>
+              <input type="number" ng-model="teste" placeholder="Valor">
+          </input-field>
+          </div>
+          <div class="input-field col s6">
+            <h5>Imposto </h5> {{tempCtrl.salarioToImposto(teste) | currency:"R$" }}
+          </div>
+        </div>
+      </form>
+
+
+    </div>
+
+ 
+  </body>
+</html>
