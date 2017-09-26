@@ -1,24 +1,32 @@
 var app = angular.module('myApp', []);
 
 app.factory('CarrinhoDeCompras', function() {
-  var lista = {};
-  lista.armazena = function (descricao,quantidade,preco) {
-        listinha[] = [{desc: descricao, quant: quantidade, preco: preco}];
+  var list = {};
+  list.lista = [];
+  list.total = 0;
+ 
+  list.armazena = function (descricao,preco,quantidade) {
+        list.lista.push({desc: descricao, preco: preco, quantidade: quantidade});
+        list.total = list.total + (quantidade*preco);
+        console.log(list.lista);
   };
   
-  return lista;
+ 
+  return list;
     
 });
 
+
+
 app.controller('ComprasController', ['$scope','CarrinhoDeCompras', function($scope,CarrinhoDeCompras) {
-    this.item = [{desc: "lapis", quant: 1, preco: 1}];
     $scope.carrinho = CarrinhoDeCompras;
-    CarrinhoDeCompras.armazena(this.item.desc, this.item.quant, this.item.preco);
+
     
+ 
 
 }]);
 
-app.controller('CheckOutController', ['$scope','temp', function($scope,temp) {
-
-
+app.controller('CheckOutController', ['$scope','CarrinhoDeCompras', function($scope,CarrinhoDeCompras) {
+    $scope.listando = CarrinhoDeCompras;
+  
 }]);

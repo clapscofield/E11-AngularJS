@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="myApp">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Carrinho de compras</a>
+        </div>
+    </nav>
+
+    <div ng-controller="ComprasController">
+    <h4> Adicionar item </h4>
+     <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s4">
+          <h5>Descrição</h5>
+            <input id="nome" type="text" class="validate" ng-model="descricao">
+        </div>
+        <div class="input-field col s4">
+          <h5>Preço</h5>
+          <input id="tel" type="number" class="validate" ng-model="preco">
+          
+        </div>
+        <div class="input-field col s4">
+          <h5>Quantidade</h5>
+          <input id="tel" type="number" class="validate" ng-model="quantidade">
+          
+        </div>
+      </div>
+      </div>
+    </form>
+     <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="carrinho.armazena(descricao,preco,quantidade)">Submit
+    <i class="material-icons right">send</i>
+    </button>
+
+   
+    </div>
+    <div ng-controller="CheckOutController">
+        
+        <br><br>
+    
+      <table>
+        <thead>
+          <tr>   
+              <th>Descrição</th>
+              <th>Quantidade</th>
+              <th>Preço</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr ng-repeat="x in listando.lista"> 
+
+            <td>{{x.desc}}</td>
+            <td>{{x.quantidade}}</td>
+            <td>{{x.preco}}</td>
+          </tr>
+
+          
+        </tbody>
+      </table>
+      <h5> Total : {{listando.total}}</h5>
+ 
+  </div>
+        
+  </body>
+</html>
