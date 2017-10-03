@@ -1,5 +1,42 @@
 var app = angular.module('FuncionariosApp', []);
 
+app.filter('cpf', function() {
+    return function(input) {
+      var str = input + '';
+      if(str.length <= 11){
+        str = str.replace(/\D/g, '');
+        str = str.replace(/(\d{3})(\d)/, "$1.$2");
+        str = str.replace(/(\d{3})(\d)/, "$1.$2");
+        str = str.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+      }
+      return str;
+    };
+ });
+
+app.filter('tel', function() {
+    return function(number) {
+       if (!number) { return ''; }
+            number = String(number);
+            number = number.replace(/[^0-9]*/g, '');
+            var formattedNumber = number;
+ 
+            var c = '';
+   
+ 
+            var area = number.substring(0, 2);
+            var front = number.substring(2, 6);
+            var end = number.substring(6, 10);
+ 
+            if (front) {
+                formattedNumber = (c + "(" + area + ") " + front);
+            }
+            if (end) {
+                formattedNumber += ("-" + end);
+            }
+            return formattedNumber;
+        };
+ });
+
 app.controller('FuncionariosController', function() {
 
   this.employees = [

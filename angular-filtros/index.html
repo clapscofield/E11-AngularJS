@@ -10,7 +10,8 @@
   </head>
   <body ng-app="FuncionariosApp" ng-controller="FuncionariosController as funcCtrl">
 
-    <input type="text" ng-model="searchInput">
+     <p> Search : </p><input type="text" ng-model="searchInput">
+     <p> Limite: </p><input type="text" ng-model="limite">
 
     <table>
       <th>
@@ -30,21 +31,26 @@
           <b>Salário</b>
         </td>
       </th>
-      <tr ng-repeat="employee in funcCtrl.employees">
+      <tr ng-repeat="employee in funcCtrl.employees | filter: searchInput  | orderBy : 'name' | limitTo: limite">
         <td>
           {{employee.name}}
+          <br>
         </td>
         <td>
-          {{employee.cpf}}
+          {{employee.cpf | cpf}}
+          <br>
         </td>
         <td>
           {{employee.email}}
+          <br>
         </td>
         <td>
-          {{employee.phone}}
+          {{employee.phone | tel}}
+          <br>
         </td>
         <td>
           {{employee.salary}}
+          <br>
         </td>
       </tr>
     </table>
