@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+     <script src="app.js"></script>
+
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="formCtrl">
+      <div class="container">
+      <div class="row">  
+   
+        <div class="col-sm-6">
+  
+          <!-- FORM -->  
+          <form name="userForm" ng-submit="submitForm()" novalidate>
+
+    <!-- NAME -->
+    <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+      <label>Nome</label>
+      <input type="text" name="name" class="form-control" ng-model="user.name" required>
+      <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">Seu nome é obrigatório</p>
+    </div>
+
+    <!-- CPF -->
+    <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+      <label>CPF</label>
+      <input type="number" name="cpf" class="form-control" ng-model="user.cpf" ng-minlength="13" ng-maxlength="13">
+      <p ng-show="userForm.cpf.$error.minlength" class="help-block">CPF são 13 caracteres.</p>
+    </div>
+
+     <!-- PHONE -->
+    <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+      <label>Telefone</label>
+      <input type="number" name="tel" class="form-control" ng-model="user.tel" required>
+      <p ng-show="userForm.tel.$invalid && !userForm.tel.$pristine" class="help-block">Seu tel é obrigatório</p>
+    </div>
+
+    <!-- END -->
+    <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+      <label>Endereço</label>
+      <input type="text" name="end" class="form-control" ng-model="user.end">
+      <p ng-show="userForm.end.$invalid && !userForm.end.$pristine" class="help-block">Seu endereço é obrigatório</p>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+      <label>Email</label>
+      <input type="email" name="email" class="form-control" ng-model="user.email">
+      <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Informe um e-mail válido.</p>
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Enviar</button>
+
+    </form>
+  </div>
+  </body>
+</html>
